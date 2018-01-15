@@ -1,0 +1,35 @@
+name:                generate-traffic
+version:             0.1.0.0
+github:              "githubuser/generate-traffic"
+license:             BSD3
+author:              "Author name here"
+maintainer:          "example@example.com"
+copyright:           "2018 Author name here"
+
+description:         Please see the README on Github at <https://github.com/githubuser/generate-traffic#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+
+executables:
+  generate-traffic:
+    main:                Main.hs
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - aeson
+    - async
+    - bytestring
+    - containers
+    - http-client
+    - http-types
+    - random
+    - stm
+    - text
+    - time
+    - zlib
+    - lens-aeson
+    - lens
+    - optparse-applicative
