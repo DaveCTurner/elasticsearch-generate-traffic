@@ -176,7 +176,9 @@ main = do
                 atomically $ modifyTVar docIdsVar $ (<> S.fromList newDocIds)
                 logRequestAndResult $ do
                   BL.hPut hLog wholeResponseBody
-                  hPutStrLn hLog $ printf "# generated ids: %s" (show newDocIds)
+                  hPutStrLn hLog $ printf "\n# generated ids: %s" (show newDocIds)
+                  forM_ itemResponses $ \itemResponse -> do
+                    BL.hPut hLog $ BL.pack [0x23, 0x20] <> encode itemResponse <> BL.singleton 0x0a
     
     asyncs <- mapM (async . worker) (take workerCount [0..])
     mapM_ wait asyncs
